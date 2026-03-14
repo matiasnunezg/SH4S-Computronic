@@ -1,4 +1,4 @@
-# Archivos de configuración locales y de Android Studio
+#Archivos de configuración locales y de Android Studio
 *.iml
 .gradle/
 .idea/
