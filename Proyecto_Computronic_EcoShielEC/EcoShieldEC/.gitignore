@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Local SDK config (NO se sube)
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# NDK / CMake
+.externalNativeBuild/
+.cxx/
+
+# Captures / logs
+captures/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

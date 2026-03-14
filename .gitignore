@@ -1,0 +1,32 @@
+# Archivos de configuración locales y de Android Studio
+*.iml
+.gradle/
+.idea/
+local.properties
+.DS_Store
+
+# Archivos de compilación y binarios generados
+/build
+*/build
+*/*/build
+*.class
+*.apk
+*.ap_
+*.aab
+*.dex
+
+# Archivos NDK / C++ (Por si acaso integren algo a bajo nivel luego)
+.cxx/
+.externalNativeBuild/
+
+# Keystores y firmas (¡Regla de oro: NUNCA subir las claves de la app!)
+*.jks
+*.keystore
+
+# Logs y crashes de la máquina virtual
+*.log
+hs_err_pid*
+replay_pid*
+
+# Archivos temporales de testing
+/captures
