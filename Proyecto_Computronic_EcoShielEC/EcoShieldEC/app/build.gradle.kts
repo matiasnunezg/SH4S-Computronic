@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "espol.poo.ecoshieldec"
+    namespace = "espol.spacehack.ecoshieldec"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "espol.poo.ecoshieldec"
+        applicationId = "espol.spacehack.ecoshieldec"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -40,4 +40,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    // Librerías para conexión a Internet (Retrofit + Gson)
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    // Librería de Mapas gratis para el Hackathon (Osmdroid)
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
 }

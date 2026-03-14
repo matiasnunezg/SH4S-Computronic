@@ -1,4 +1,4 @@
-package espol.poo.ecoshieldec;
+package espol.spacehack.ecoshieldec;
 
 import org.junit.Test;
 
