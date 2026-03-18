@@ -1,0 +1,750 @@
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\README.md =====  
+#SH4S-Computronic
+#Repositorio del grupo Computronic para el Space Hack 4 for Sustainability.
+ 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\build.gradle.kts =====  
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    alias(libs.plugins.android.application) apply false
+} 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\settings.gradle.kts =====  
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "EcoShieldEC"
+include(":app")
+ 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\gradle.properties =====  
+# Project-wide Gradle settings.
+# IDE (e.g. Android Studio) users:
+# Gradle settings configured through the IDE *will override*
+# any settings specified in this file.
+# For more details on how to configure your build environment visit
+# http://www.gradle.org/docs/current/userguide/build_environment.html
+# Specifies the JVM arguments used for the daemon process.
+# The setting is particularly useful for tweaking memory settings.
+org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+# When configured, Gradle will run in incubating parallel mode.
+# This option should only be used with decoupled projects. For more details, visit
+# https://developer.android.com/r/tools/gradle-multi-project-decoupled-projects
+# org.gradle.parallel=true
+# AndroidX package structure to make it clearer which packages are bundled with the
+# Android operating system, and which are packaged with your app's APK
+# https://developer.android.com/topic/libraries/support-library/androidx-rn
+android.useAndroidX=true
+# Enables namespacing of each library's R class so that its R class includes only the
+# resources declared in the library itself and none from the library's dependencies,
+# thereby reducing the size of the R class for that library
+android.nonTransitiveRClass=true 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\build.gradle.kts =====  
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace = "espol.spacehack.ecoshieldec"
+    compileSdk = 36
+
+    defaultConfig {
+        applicationId = "espol.spacehack.ecoshieldec"
+        minSdk = 24
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.activity)
+    implementation(libs.constraintlayout)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    // Librerías para conexión a Internet (Retrofit + Gson)
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    // Librería de Mapas gratis para el Hackathon (Osmdroid)
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
+} 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\androidTest\java\espol\spacehack\ecoshieldec\ExampleInstrumentedTest.java =====  
+package espol.spacehack.ecoshieldec;
+
+import android.content.Context;
+
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static org.junit.Assert.*;
+
+/**
+ * Instrumented test, which will execute on an Android device.
+ *
+ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ */
+@RunWith(AndroidJUnit4.class)
+public class ExampleInstrumentedTest {
+    @Test
+    public void useAppContext() {
+        // Context of the app under test.
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        assertEquals("espol.poo.ecoshieldec", appContext.getPackageName());
+    }
+} 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\AndroidManifest.xml =====  
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EcoShieldEC">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\model\AlertResponse.java =====  
+package espol.spacehack.ecoshieldec.model;
+
+public class AlertResponse {
+    public String alertId;
+    public String timestamp;
+    public LocationData location;
+    public SatelliteData satelliteData;
+    public IoTSensorData iotSensorData;
+    public AnalysisData analysis;
+
+    public static class LocationData {
+        public String zone;
+        public double lat;
+        public double lng;
+    }
+
+    public static class SatelliteData {
+        public String source;
+        public double cloudCoverPercentage;
+        public double mangroveHealthNdvi;
+        public String status;
+    }
+
+    public static class IoTSensorData {
+        public String sensorId;
+        public double waterLevelCm;
+        public boolean isOnline;
+        public String status;
+    }
+
+    public static class AnalysisData {
+        public String overallRiskLevel;
+        public int riskScore;
+        public String message;
+        public String recommendedAction;
+    }
+} 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\network\ApiClient.java =====  
+package espol.spacehack.ecoshieldec.network;
+
+import espol.spacehack.ecoshieldec.utils.Constants;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class ApiClient {
+    private static Retrofit retrofit = null;
+
+    // Este método nos entrega el motor listo para usar en cualquier parte de la app
+    public static Retrofit getClient() {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(Constants.BASE_URL_API) // La URL de tu archivo Constants
+                    .addConverterFactory(GsonConverterFactory.create()) // Traduce el JSON a código Java automáticamente
+                    .build();
+        }
+        return retrofit;
+    }
+} 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\network\ApiService.java =====  
+package espol.spacehack.ecoshieldec.network;
+
+import espol.spacehack.ecoshieldec.model.AlertResponse;
+import retrofit2.Call;
+import retrofit2.http.GET;
+
+public interface ApiService {
+
+    // Aquí definimos la ruta (endpoint) a la que la app va a "tocar la puerta".
+    // Doménica te dará la ruta final, por ahora dejamos esta de prueba.
+    @GET("api/v1/manglares/status")
+    Call<AlertResponse> getMangroveStatus();
+
+} 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\ui\MainActivity.java =====  
+package espol.spacehack.ecoshieldec.ui;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import espol.spacehack.ecoshieldec.R;
+import espol.spacehack.ecoshieldec.model.AlertResponse;
+import espol.spacehack.ecoshieldec.network.ApiClient;
+import espol.spacehack.ecoshieldec.network.ApiService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+// Importaciones del Mapa (Osmdroid)
+import org.osmdroid.config.Configuration;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+import org.osmdroid.api.IMapController;
+import org.osmdroid.views.overlay.Marker;
+
+public class MainActivity extends AppCompatActivity {
+
+    // Declaramos las variables para controlar la pantalla
+    private TextView tvSatelliteStatus;
+    private TextView tvSensorStatus;
+    private Button btnRefresh;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // --- MAPA: Configuración obligatoria ANTES de dibujar la pantalla ---
+        Configuration.getInstance().load(getApplicationContext(), getSharedPreferences("osmdroid", MODE_PRIVATE));
+
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        // Ajuste de los bordes del celular (Edge-to-Edge)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+        // Enlazamos las variables de Java con los IDs de nuestro diseño XML
+        tvSatelliteStatus = findViewById(R.id.tv_satellite_status);
+        tvSensorStatus = findViewById(R.id.tv_sensor_status);
+        btnRefresh = findViewById(R.id.btn_refresh);
+
+        // --- MAPA: Lógica para mostrar Guayaquil y el Marcador ---
+        MapView map = findViewById(R.id.mapview);
+        map.setMultiTouchControls(true); // Permite hacer zoom con los dedos
+        IMapController mapController = map.getController();
+        mapController.setZoom(13.0); // Nivel de zoom perfecto para ver el manglar y la ciudad
+
+        // Coordenadas del Manglar en el Estero Salado (Guayaquil)
+        GeoPoint sensorLocation = new GeoPoint(-2.203816, -79.897453);
+        mapController.setCenter(sensorLocation);
+
+        // Creamos el Pin/Marcador del Sensor IoT de Aarón
+        Marker iotMarker = new Marker(map);
+        iotMarker.setPosition(sensorLocation);
+        iotMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        iotMarker.setTitle("📡 Nodo IoT Activo (Sensor de Aarón)");
+        iotMarker.setSnippet("Monitoreando nivel de agua en tiempo real");
+        map.getOverlays().add(iotMarker); // Agregamos el pin al mapa
+
+        // Le damos vida al botón
+        btnRefresh.setOnClickListener(v -> {
+            // Cambiamos el texto temporalmente para que el usuario sepa que está cargando
+            tvSatelliteStatus.setText("📡 Satélite: Conectando con la nube...");
+            tvSensorStatus.setText("🌊 Sensor IoT: Conectando con nodo local...");
+
+            // Llamamos a nuestra función de internet
+            obtenerDatosDelServidor();
+        });
+    }
+
+    private void obtenerDatosDelServidor() {
+        // Encendemos el motor de Retrofit
+        ApiService service = ApiClient.getClient().create(ApiService.class);
+
+        // Hacemos la llamada en segundo plano (para no congelar el celular)
+        Call<AlertResponse> call = service.getMangroveStatus();
+        call.enqueue(new Callback<AlertResponse>() {
+
+            @Override
+            public void onResponse(Call<AlertResponse> call, Response<AlertResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // ¡ÉXITO! Adrián y Doménica nos mandaron la data real
+                    AlertResponse alerta = response.body();
+
+                    tvSatelliteStatus.setText("📡 Satélite (" + alerta.satelliteData.source + "): NDVI "
+                            + alerta.satelliteData.mangroveHealthNdvi + " - " + alerta.satelliteData.status);
+
+                    tvSensorStatus.setText("🌊 Sensor IoT (" + alerta.iotSensorData.sensorId + "): Nivel "
+                            + alerta.iotSensorData.waterLevelCm + "cm - " + alerta.iotSensorData.status);
+
+                    Toast.makeText(MainActivity.this, "Datos en tiempo real obtenidos", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AlertResponse> call, Throwable t) {
+                // FALLO: Como el servidor aún no existe, el código entrará por aquí.
+                Log.e("SPACEHACK_API", "Error de servidor: " + t.getMessage());
+
+                // Mostramos un mensajito en pantalla
+                Toast.makeText(MainActivity.this, "Servidor apagado. Cargando simulación local...", Toast.LENGTH_LONG).show();
+
+                // Mostramos datos simulados (Hardcoded) para poder hacer pruebas y tomar capturas
+                tvSatelliteStatus.setText("📡 Satélite (Sentinel-2): NDVI 0.42 - ALERTA (Nubosidad 85%)");
+                tvSensorStatus.setText("🌊 Sensor IoT (SH-NODE-01): Nivel 145.2cm - CRÍTICO 🚨");
+            }
+        });
+    }
+} 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\utils\Constants.java =====  
+package espol.spacehack.ecoshieldec.utils;
+
+public class Constants {
+    // Aquí pondremos la IP o URL del servidor de Adrián cuando lo tenga listo
+    public static final String BASE_URL_API = "https://api.spacehack-ecoshield.com/";
+
+    // Niveles de Alerta
+    public static final String RISK_HIGH = "HIGH";
+    public static final String RISK_MEDIUM = "MEDIUM";
+    public static final String RISK_LOW = "LOW";
+} 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\drawable\ic_launcher_background.xml =====  
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#3DDC84"
+        android:pathData="M0,0h108v108h-108z" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M9,0L9,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,0L19,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M29,0L29,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M39,0L39,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M49,0L49,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M59,0L59,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M69,0L69,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M79,0L79,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M89,0L89,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M99,0L99,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,9L108,9"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,19L108,19"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,29L108,29"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,39L108,39"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,49L108,49"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,59L108,59"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,69L108,69"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,79L108,79"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,89L108,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,99L108,99"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,29L89,29"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,39L89,39"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,49L89,49"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,59L89,59"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,69L89,69"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,79L89,79"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M29,19L29,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M39,19L39,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M49,19L49,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M59,19L59,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M69,19L69,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M79,19L79,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+</vector>
+ 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\drawable\ic_launcher_foreground.xml =====  
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="85.84757"
+                android:endY="92.4963"
+                android:startX="42.9492"
+                android:startY="49.59793"
+                android:type="linear">
+                <item
+                    android:color="#44000000"
+                    android:offset="0.0" />
+                <item
+                    android:color="#00000000"
+                    android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="nonZero"
+        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
+        android:strokeWidth="1"
+        android:strokeColor="#00000000" />
+</vector> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\layout\activity_main.xml =====  
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F4F6F8"
+    android:padding="16dp"
+    tools:context=".ui.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EcoShield: Gran Guayaquil"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#2C3E50"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:elevation="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estado Actual del Manglar"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#34495E"/>
+
+        <TextView
+            android:id="@+id/tv_satellite_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📡 Satélite: Esperando datos..."
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_sensor_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🌊 Sensor IoT: Esperando datos..."
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/btn_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Actualizar Datos"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#2980B9"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+</LinearLayout> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\mipmap-anydpi-v26\ic_launcher.xml =====  
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\mipmap-anydpi-v26\ic_launcher_round.xml =====  
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values\colors.xml =====  
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values\strings.xml =====  
+<resources>
+    <string name="app_name">EcoShieldEC</string>
+</resources> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values\themes.xml =====  
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.EcoShieldEC" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.EcoShieldEC" parent="Base.Theme.EcoShieldEC" />
+</resources> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values-night\themes.xml =====  
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.EcoShieldEC" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
+</resources> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\xml\backup_rules.xml =====  
+<?xml version="1.0" encoding="utf-8"?><!--
+   Sample backup rules file; uncomment and customize as necessary.
+   See https://developer.android.com/guide/topics/data/autobackup
+   for details.
+   Note: This file is ignored for devices older than API 31
+   See https://developer.android.com/about/versions/12/backup-restore
+-->
+<full-backup-content>
+    <!--
+   <include domain="sharedpref" path="."/>
+   <exclude domain="sharedpref" path="device.xml"/>
+-->
+</full-backup-content> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\xml\data_extraction_rules.xml =====  
+<?xml version="1.0" encoding="utf-8"?><!--
+   Sample data extraction rules file; uncomment and customize as necessary.
+   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
+   for details.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- TODO: Use <include> and <exclude> to control what is backed up.
+        <include .../>
+        <exclude .../>
+        -->
+    </cloud-backup>
+    <!--
+    <device-transfer>
+        <include .../>
+        <exclude .../>
+    </device-transfer>
+    -->
+</data-extraction-rules> 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\test\java\espol\spacehack\ecoshieldec\ExampleUnitTest.java =====  
+package espol.spacehack.ecoshieldec;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ */
+public class ExampleUnitTest {
+    @Test
+    public void addition_isCorrect() {
+        assertEquals(4, 2 + 2);
+    }
+} 
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\gradle\wrapper\gradle-wrapper.properties =====  
+#Sat Mar 14 12:33:41 ECT 2026
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+ 

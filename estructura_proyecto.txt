@@ -1,0 +1,108 @@
+Listado de rutas de carpetas
+El número de serie del volumen es 5E28-0706
+C:.
+¦   .gitignore
+¦   estructura_proyecto.txt
+¦   proyecto_dump.txt
+¦   README.md
+¦   
++---Proyecto_Computronic_EcoShielEC
+    +---EcoShieldEC
+        ¦   .gitignore
+        ¦   build.gradle.kts
+        ¦   gradle.properties
+        ¦   gradlew
+        ¦   gradlew.bat
+        ¦   settings.gradle.kts
+        ¦   
+        +---app
+        ¦   ¦   .gitignore
+        ¦   ¦   build.gradle.kts
+        ¦   ¦   proguard-rules.pro
+        ¦   ¦   
+        ¦   +---src
+        ¦       +---androidTest
+        ¦       ¦   +---java
+        ¦       ¦       +---espol
+        ¦       ¦           +---spacehack
+        ¦       ¦               +---ecoshieldec
+        ¦       ¦                       ExampleInstrumentedTest.java
+        ¦       ¦                       
+        ¦       +---main
+        ¦       ¦   ¦   AndroidManifest.xml
+        ¦       ¦   ¦   
+        ¦       ¦   +---java
+        ¦       ¦   ¦   +---espol
+        ¦       ¦   ¦       +---spacehack
+        ¦       ¦   ¦           +---ecoshieldec
+        ¦       ¦   ¦               +---model
+        ¦       ¦   ¦               ¦       AlertResponse.java
+        ¦       ¦   ¦               ¦       
+        ¦       ¦   ¦               +---network
+        ¦       ¦   ¦               ¦       ApiClient.java
+        ¦       ¦   ¦               ¦       ApiService.java
+        ¦       ¦   ¦               ¦       
+        ¦       ¦   ¦               +---ui
+        ¦       ¦   ¦               ¦       MainActivity.java
+        ¦       ¦   ¦               ¦       
+        ¦       ¦   ¦               +---utils
+        ¦       ¦   ¦                       Constants.java
+        ¦       ¦   ¦                       
+        ¦       ¦   +---res
+        ¦       ¦       +---drawable
+        ¦       ¦       ¦       ic_launcher_background.xml
+        ¦       ¦       ¦       ic_launcher_foreground.xml
+        ¦       ¦       ¦       
+        ¦       ¦       +---layout
+        ¦       ¦       ¦       activity_main.xml
+        ¦       ¦       ¦       
+        ¦       ¦       +---mipmap-anydpi-v26
+        ¦       ¦       ¦       ic_launcher.xml
+        ¦       ¦       ¦       ic_launcher_round.xml
+        ¦       ¦       ¦       
+        ¦       ¦       +---mipmap-hdpi
+        ¦       ¦       ¦       ic_launcher.webp
+        ¦       ¦       ¦       ic_launcher_round.webp
+        ¦       ¦       ¦       
+        ¦       ¦       +---mipmap-mdpi
+        ¦       ¦       ¦       ic_launcher.webp
+        ¦       ¦       ¦       ic_launcher_round.webp
+        ¦       ¦       ¦       
+        ¦       ¦       +---mipmap-xhdpi
+        ¦       ¦       ¦       ic_launcher.webp
+        ¦       ¦       ¦       ic_launcher_round.webp
+        ¦       ¦       ¦       
+        ¦       ¦       +---mipmap-xxhdpi
+        ¦       ¦       ¦       ic_launcher.webp
+        ¦       ¦       ¦       ic_launcher_round.webp
+        ¦       ¦       ¦       
+        ¦       ¦       +---mipmap-xxxhdpi
+        ¦       ¦       ¦       ic_launcher.webp
+        ¦       ¦       ¦       ic_launcher_round.webp
+        ¦       ¦       ¦       
+        ¦       ¦       +---values
+        ¦       ¦       ¦       colors.xml
+        ¦       ¦       ¦       strings.xml
+        ¦       ¦       ¦       themes.xml
+        ¦       ¦       ¦       
+        ¦       ¦       +---values-night
+        ¦       ¦       ¦       themes.xml
+        ¦       ¦       ¦       
+        ¦       ¦       +---xml
+        ¦       ¦               backup_rules.xml
+        ¦       ¦               data_extraction_rules.xml
+        ¦       ¦               
+        ¦       +---test
+        ¦           +---java
+        ¦               +---espol
+        ¦                   +---spacehack
+        ¦                       +---ecoshieldec
+        ¦                               ExampleUnitTest.java
+        ¦                               
+        +---gradle
+            ¦   libs.versions.toml
+            ¦   
+            +---wrapper
+                    gradle-wrapper.jar
+                    gradle-wrapper.properties
+                    
