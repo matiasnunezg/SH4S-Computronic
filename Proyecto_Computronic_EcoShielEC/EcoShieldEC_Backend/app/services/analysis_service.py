@@ -1,43 +1,46 @@
-class AnalysisService:
-    def calculate_risk(self, ndvi: float, water_level: float):
-        score = 0
-        message = ""
-        action = ""
+# Función pura → fácil de testear 🔥
+def calculate_risk(ndvi: float, water_level: float) -> dict:
+    score = 0
+    messages = []
+    action = "Monitoreo constante"
 
-        # Lógica para NDVI (Satélite - Doménica)
-        if ndvi < 0.3:
-            score += 60  # Riesgo alto por deforestación
-            message = "Deforestación detectada"
-        elif ndvi < 0.6:
-            score += 20
-            message = "Salud del manglar estable"
-        else:
-            message = "Manglar saludable"
+    # --- NDVI ---
+    if ndvi < 0 or ndvi > 1:
+        raise ValueError("NDVI fuera de rango válido (0 - 1)")
 
-        # Lógica para Nivel de Agua (IoT - Aarón)
-        # Supongamos que > 150cm es inundación peligrosa
-        if water_level > 150:
-            score += 40
-            message += " + Alerta de inundación"
-            action = "Evacuar y asegurar sensores"
-        elif water_level < 20:
-            score += 20
-            message += " + Nivel de agua bajo"
-            action = "Revisar flujo de canales"
-        else:
-            action = "Monitoreo constante"
+    if ndvi < 0.3:
+        score += 60
+        messages.append("Deforestación detectada")
+    elif ndvi < 0.6:
+        score += 20
+        messages.append("Salud del manglar estable")
+    else:
+        messages.append("Manglar saludable")
 
-        # Determinación del nivel final
-        if score >= 80:
-            level = "CRITICAL"
-        elif score >= 50:
-            level = "WARNING"
-        else:
-            level = "NORMAL"
+    # --- Nivel de agua ---
+    if water_level < 0:
+        raise ValueError("Nivel de agua inválido")
 
-        return {
-            "overallRiskLevel": level,
-            "riskScore": min(score, 100), # Que no pase de 100
-            "message": message,
-            "recommendedAction": action
-        }
+    if water_level > 150:
+        score += 40
+        messages.append("Alerta de inundación")
+        action = "Evacuar y asegurar sensores"
+    elif water_level < 20:
+        score += 20
+        messages.append("Nivel de agua bajo")
+        action = "Revisar flujo de canales"
+
+    # --- Nivel final ---
+    if score >= 80:
+        level = "CRITICAL"
+    elif score >= 50:
+        level = "WARNING"
+    else:
+        level = "NORMAL"
+
+    return {
+        "overallRiskLevel": level,
+        "riskScore": min(score, 100),
+        "message": " + ".join(messages),
+        "recommendedAction": action
+    }

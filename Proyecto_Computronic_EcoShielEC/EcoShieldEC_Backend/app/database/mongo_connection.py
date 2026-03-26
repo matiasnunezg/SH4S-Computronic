@@ -1,7 +1,10 @@
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://localhost:27017")
+# Conexión robusta con timeout
+client = MongoClient(
+    "mongodb://localhost:27017",
+    serverSelectionTimeoutMS=5000
+)
 
-db = client["ecosystem_db"] # Nombre de la base de datos
-alerts_collection = db["alerts"] # Nombre de la colección (la "tabla")
-
+db = client["ecosystem_db"]
+alerts_collection = db["alerts"]
