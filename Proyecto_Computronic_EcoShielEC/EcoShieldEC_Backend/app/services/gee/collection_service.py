@@ -1,6 +1,5 @@
 import ee
 
-
 class CollectionService:
     def __init__(self, collection_id: str):
         self.collection_id = collection_id
@@ -12,7 +11,10 @@ class CollectionService:
             .filterDate(start_date, end_date)
             .filter(ee.Filter.lt("CLOUDY_PIXEL_PERCENTAGE", cloud_percentage))
         )
-
+        
+    def get_collection_elevation(self, region: ee.Geometry) -> ee.Image:
+        return ee.Image(self.collection_id).clip(region)
+    
     @staticmethod
     def get_median_image(collection: ee.ImageCollection) -> ee.Image:
         return collection.median()
