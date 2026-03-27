@@ -6,17 +6,13 @@ from app.services.analysis_service import calculate_risk
 
 def create_new_alert(alert_data: AlertResponseModel):
     try:
-        # Extraer datos críticos
         ndvi = alert_data.satelliteData.mangroveHealthNdvi
         water = alert_data.iotSensorData.waterLevelCm
 
-        # Calcular riesgo real
         risk_result = calculate_risk(ndvi, water)
 
-        # Sobrescribir análisis del cliente (seguridad 🔥)
         alert_data.analysis = AnalysisModel(**risk_result)
 
-        # Guardar en DB
         document = alert_data.model_dump()
         inserted_id = insert_alert(document)
 

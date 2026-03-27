@@ -1,13 +1,13 @@
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\README.md =====  
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\README.md =====
 #SH4S-Computronic
 #Repositorio del grupo Computronic para el Space Hack 4 for Sustainability.
- 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\build.gradle.kts =====  
+
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\build.gradle.kts =====
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(libs.plugins.android.application) apply false
-} 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\settings.gradle.kts =====  
+}
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\settings.gradle.kts =====
 pluginManagement {
     repositories {
         google {
@@ -31,8 +31,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "EcoShieldEC"
 include(":app")
- 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\gradle.properties =====  
+
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\gradle.properties =====
 # Project-wide Gradle settings.
 # IDE (e.g. Android Studio) users:
 # Gradle settings configured through the IDE *will override*
@@ -53,8 +53,8 @@ android.useAndroidX=true
 # Enables namespacing of each library's R class so that its R class includes only the
 # resources declared in the library itself and none from the library's dependencies,
 # thereby reducing the size of the R class for that library
-android.nonTransitiveRClass=true 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\build.gradle.kts =====  
+android.nonTransitiveRClass=true
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\build.gradle.kts =====
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -102,8 +102,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     // Librería de Mapas gratis para el Hackathon (Osmdroid)
     implementation("org.osmdroid:osmdroid-android:6.1.18")
-} 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\androidTest\java\espol\spacehack\ecoshieldec\ExampleInstrumentedTest.java =====  
+}
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\androidTest\java\espol\spacehack\ecoshieldec\ExampleInstrumentedTest.java =====
 package espol.spacehack.ecoshieldec;
 
 import android.content.Context;
@@ -129,8 +129,8 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("espol.poo.ecoshieldec", appContext.getPackageName());
     }
-} 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\AndroidManifest.xml =====  
+}
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\AndroidManifest.xml =====
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
@@ -158,8 +158,8 @@ public class ExampleInstrumentedTest {
 
     </application>
 
-</manifest> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\model\AlertResponse.java =====  
+</manifest>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\model\AlertResponse.java =====
 package espol.spacehack.ecoshieldec.model;
 
 public class AlertResponse {
@@ -196,8 +196,8 @@ public class AlertResponse {
         public String message;
         public String recommendedAction;
     }
-} 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\network\ApiClient.java =====  
+}
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\network\ApiClient.java =====
 package espol.spacehack.ecoshieldec.network;
 
 import espol.spacehack.ecoshieldec.utils.Constants;
@@ -217,8 +217,8 @@ public class ApiClient {
         }
         return retrofit;
     }
-} 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\network\ApiService.java =====  
+}
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\network\ApiService.java =====
 package espol.spacehack.ecoshieldec.network;
 
 import espol.spacehack.ecoshieldec.model.AlertResponse;
@@ -232,8 +232,8 @@ public interface ApiService {
     @GET("api/v1/manglares/status")
     Call<AlertResponse> getMangroveStatus();
 
-} 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\ui\MainActivity.java =====  
+}
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\ui\MainActivity.java =====
 package espol.spacehack.ecoshieldec.ui;
 
 import android.os.Bundle;
@@ -360,8 +360,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-} 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\utils\Constants.java =====  
+}
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\java\espol\spacehack\ecoshieldec\utils\Constants.java =====
 package espol.spacehack.ecoshieldec.utils;
 
 public class Constants {
@@ -372,8 +372,8 @@ public class Constants {
     public static final String RISK_HIGH = "HIGH";
     public static final String RISK_MEDIUM = "MEDIUM";
     public static final String RISK_LOW = "LOW";
-} 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\drawable\ic_launcher_background.xml =====  
+}
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\drawable\ic_launcher_background.xml =====
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
@@ -544,8 +544,8 @@ public class Constants {
         android:strokeWidth="0.8"
         android:strokeColor="#33FFFFFF" />
 </vector>
- 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\drawable\ic_launcher_foreground.xml =====  
+
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\drawable\ic_launcher_foreground.xml =====
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
@@ -575,8 +575,8 @@ public class Constants {
         android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
         android:strokeWidth="1"
         android:strokeColor="#00000000" />
-</vector> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\layout\activity_main.xml =====  
+</vector>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\layout\activity_main.xml =====
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -645,32 +645,32 @@ public class Constants {
             android:textColor="#FFFFFF"/>
     </LinearLayout>
 
-</LinearLayout> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\mipmap-anydpi-v26\ic_launcher.xml =====  
+</LinearLayout>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\mipmap-anydpi-v26\ic_launcher.xml =====
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
     <background android:drawable="@drawable/ic_launcher_background" />
     <foreground android:drawable="@drawable/ic_launcher_foreground" />
     <monochrome android:drawable="@drawable/ic_launcher_foreground" />
-</adaptive-icon> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\mipmap-anydpi-v26\ic_launcher_round.xml =====  
+</adaptive-icon>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\mipmap-anydpi-v26\ic_launcher_round.xml =====
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
     <background android:drawable="@drawable/ic_launcher_background" />
     <foreground android:drawable="@drawable/ic_launcher_foreground" />
     <monochrome android:drawable="@drawable/ic_launcher_foreground" />
-</adaptive-icon> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values\colors.xml =====  
+</adaptive-icon>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values\colors.xml =====
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-</resources> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values\strings.xml =====  
+</resources>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values\strings.xml =====
 <resources>
     <string name="app_name">EcoShieldEC</string>
-</resources> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values\themes.xml =====  
+</resources>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values\themes.xml =====
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.EcoShieldEC" parent="Theme.Material3.DayNight.NoActionBar">
@@ -679,16 +679,16 @@ public class Constants {
     </style>
 
     <style name="Theme.EcoShieldEC" parent="Base.Theme.EcoShieldEC" />
-</resources> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values-night\themes.xml =====  
+</resources>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\values-night\themes.xml =====
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.EcoShieldEC" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
-</resources> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\xml\backup_rules.xml =====  
+</resources>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\xml\backup_rules.xml =====
 <?xml version="1.0" encoding="utf-8"?><!--
    Sample backup rules file; uncomment and customize as necessary.
    See https://developer.android.com/guide/topics/data/autobackup
@@ -701,8 +701,8 @@ public class Constants {
    <include domain="sharedpref" path="."/>
    <exclude domain="sharedpref" path="device.xml"/>
 -->
-</full-backup-content> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\xml\data_extraction_rules.xml =====  
+</full-backup-content>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\main\res\xml\data_extraction_rules.xml =====
 <?xml version="1.0" encoding="utf-8"?><!--
    Sample data extraction rules file; uncomment and customize as necessary.
    See https://developer.android.com/about/versions/12/backup-restore#xml-changes
@@ -721,8 +721,8 @@ public class Constants {
         <exclude .../>
     </device-transfer>
     -->
-</data-extraction-rules> 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\test\java\espol\spacehack\ecoshieldec\ExampleUnitTest.java =====  
+</data-extraction-rules>
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\app\src\test\java\espol\spacehack\ecoshieldec\ExampleUnitTest.java =====
 package espol.spacehack.ecoshieldec;
 
 import org.junit.Test;
@@ -739,12 +739,12 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
-} 
-===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\gradle\wrapper\gradle-wrapper.properties =====  
+}
+===== C:\Users\Gateway\Documents\GitHub\SH4S-Computronic\Proyecto_Computronic_EcoShielEC\EcoShieldEC\gradle\wrapper\gradle-wrapper.properties =====
 #Sat Mar 14 12:33:41 ECT 2026
 distributionBase=GRADLE_USER_HOME
 distributionPath=wrapper/dists
 distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
 zipStoreBase=GRADLE_USER_HOME
 zipStorePath=wrapper/dists
- 
+

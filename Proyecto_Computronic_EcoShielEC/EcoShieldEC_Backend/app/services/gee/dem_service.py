@@ -1,7 +1,7 @@
 import ee
 
 class DEMService:
-    def get_elevation_value_at_point(dem_image: ee.Image, point: ee.Geometry, scale: int = 30) -> float | None:
+    def get_elevation_value_at_point(self, dem_image: ee.Image, point: ee.Geometry, scale: int = 30) -> float | None:
         result = dem_image.reduceRegion(
             reducer=ee.Reducer.mean(),
             geometry=point,

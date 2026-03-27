@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ecoshield-adrian",
+  "private_key_id": "6ef23fefd54221dbb21ff51bd1271ade8167a54b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDC2vQQN4qI55ja\nv+E1NgYQUOvKt8mSAEXtr5DuwIDyKx+uO2vygWhbLWkWakRit/rIdZXzxkb7T2rD\n9WR0+Cqlqm3ALJesxQG0GQBL2FlzW7f2cOrj5Bm90SR5LzYhD/ZFbpMx3CR5DkNT\n9og8C95mVAJB14lIjaCo4ZslZypuZRrzWcF1AXM9dOq6Oegma8grXtCMbTwlEaWb\nc4bIh5iJKrUBgbTXNAs8nSEq2gx75NflEaKkjopVxoMq/hPysxG7Rn9s/Uq1KEz0\nujNOYWveQdZA3wVoBCxO+FAUguNZvQvCzX8RiFJgnRlm45Ww9mFiCOxOsvOezjeo\nHFDy/9GPAgMBAAECggEATGWKMV2FXF3pSULX6oPu5rDDceyTBEJFKIagPWuOYuRT\nfH1humfQYYcxX490lnvpwHSRwU0pAVlG0+O/ajjuh5uFgkY5hYyMOW9f9Vyy3Y7F\nVsM45PbGvOxl73l6MIZQmTJcVb0pM6lK7n2HNnu0y8v+QpBeC+szZWNm78g+E5+y\nDBxWsudRjFa/TB325J6Ko+tIPVPtUS0WUKXuekFtR6pIPSdTTj0q6pPCq3jsjWQs\n1CT2BIceAZdzy3lFjzvtpguggK5VtcQmoMPGCA9nJBcnRgAkWnpHc0qA6Wbfquvc\n4TXneBmduAExAKFtft+E9SuAFETZjuQVH5JbcwnPkQKBgQD7jctjar+mXo1S9n11\nUZ63YYFylN+IqKmUkno84s6rY1fOULrpTXw9M869G6OUiy/Y2DM5uXueGF2sbsbm\n+JHuqWSPmL9IuhmrUAmfggcVIuRSIP+9RH/eobNPSTd7ob2lI6NAQXTA8DYUKWe9\nwwDV7FSwb/nbGnaLgNIp2KeOKQKBgQDGTJ1ku5lH96PRZu2L17S2nljTyy0xW5qs\ngDLp3zAE4Pa4G+nPf2Q+TOMFlnHq66DrKS+RKf01QwYrzN+ALuigu9lc+JGsYJoK\nRp/zeZDVpV+79zqW4+qf2y38inUR4RwbOIcvBXerIKY3RCy0tQzZl8r/NRpqlcLs\noK8yk41o9wKBgAdneAoYFUYHWG+Ns8mlOl+5bf76ZM338O3fldt+7Yhb5zS6aZX+\nYt7GTJqCWsE/i4v9aRyU2g+gNfmiVRZtUJZOxBf57f9tAt5o/6+DO0Qi/8dvEzf1\n8TGTXtzBkfGApD1dHCwDATXAnEbhpR0PxVGGoEOFODx7veuDQixbJStpAoGAR4H/\nTAD+cF5T28JjLQeXKjeFzrI41NC0wTnlokKSnV/GeHPQZ7wHmRO+1hf/cniP6d1L\nQuzCW3+U7RyPCDliN/wlkQot9dxMECKRsYoH+ZMOJ8kqfpkn1YeDWMtRFiZ4LTTA\nQuuU0MgQSGO0P2H+hUTgthEfOopQ5WW4Z+OfndcCgYEAqy0LQp4b/+a4QjsEfyzt\nMqIGWEzuB/EL7KmMWq4hO0caShs3nfykyRWHpan95eZPIKEE4KNEtfxrZ3DXYSW3\nkN2sIur2XVnvp1v0dZE9pXd/kNixvCSXIJPjbAINObhixurt89Zw3WGoiJ/gKud2\n96y635cbKc30byS1kOCdaLQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "gee-service-account@ecoshield-adrian.iam.gserviceaccount.com",
+  "client_id": "114511520523988482403",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gee-service-account%40ecoshield-adrian.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

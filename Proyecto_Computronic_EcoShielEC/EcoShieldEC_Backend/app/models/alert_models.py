@@ -18,7 +18,7 @@ class IoTSensorModel(BaseModel):
     waterLevelCm: float
     isOnline: bool
     status: str
-    
+
 class EnvironmentalFeatures(BaseModel):
     ndvi: float
     ndwi: float
