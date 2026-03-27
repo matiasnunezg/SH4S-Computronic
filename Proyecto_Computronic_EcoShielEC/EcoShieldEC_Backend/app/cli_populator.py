@@ -1,5 +1,7 @@
 import typer
 import random
+import os
+from dotenv import load_dotenv
 from datetime import datetime, timezone
 
 # Colores en consola
@@ -11,6 +13,9 @@ from app.services.gee.gee_initializer import GEEInitializer
 from app.services.gee.geometry_service import GeometryService
 from app.services.gee.collection_service import CollectionService
 from app.services.gee.ndvi_service import NDVIService
+
+#OpenAI API
+from app.services.openai.openai_service import OpenAIService
 
 # Modelos y lógica existente
 from app.models.alert_models import (
@@ -25,8 +30,37 @@ from app.repositories.alert_repository import insert_alert
 
 app = typer.Typer()
 
+# System Prompt
+syst_msj = """
+You are an environmental risk recommendation assistant for mangrove and flood monitoring scenarios.
+
+Generate only one concise final recommendation based on:
+- overallRiskLevel
+- riskScore
+- message
+- recommendedAction
+
+Rules:
+- Maximum 2 sentences.
+- Output only the recommendation.
+- Be clear, short, and actionable.
+- Adapt the recommendation to the severity level:
+  - CRITICAL = urgent action
+  - WARNING = preventive action
+  - NORMAL = routine monitoring
+- Use recommendedAction as fallback if needed.
+- Do not explain, justify, or restate the data.
+- Do not use labels, headings, bullets, or variable names.
+
+Now generate the recommendation.
+
+"""
+
 # 🔥 Inicializar GEE
 GEEInitializer.initialize()
+
+# Inicializar OpenAI API
+client = OpenAIService(api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("BASE_URL"), system_prompt=syst_msj)
 
 
 @app.command()
@@ -36,6 +70,7 @@ def populate():
     """
 
     try:
+        
         # -----------------------------
         # INPUT USUARIO
         # -----------------------------
@@ -90,6 +125,9 @@ def populate():
         # ANÁLISIS DE RIESGO
         # -----------------------------
         risk = calculate_risk(ndvi_value, water_level)
+        risk.pop("recommendedAction", None)
+        new_recomendation =client.get_response(str(risk))
+        
 
         print(f"[magenta]Riesgo:[/magenta] {risk['overallRiskLevel']} ({risk['riskScore']})")
 
@@ -119,8 +157,9 @@ def populate():
                 isOnline=is_online,
                 status=sensor_status
             ),
-
-            analysis=AnalysisModel(**risk)
+            
+            analysis = AnalysisModel(**risk, recommendedAction=new_recomendation)
+            
         )
 
         # -----------------------------
