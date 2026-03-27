@@ -27,43 +27,43 @@
         android:layout_marginBottom="16dp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_width="380dp"
+        android:layout_height="175dp"
         android:background="#FFFFFF"
-        android:padding="16dp"
-        android:elevation="4dp">
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Estado Actual del Manglar"
+            android:textColor="#34495E"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#34495E"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_satellite_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="📡 Satélite: Esperando datos..."
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:text="📡 Satélite: Esperando datos..." />
 
         <TextView
             android:id="@+id/tv_sensor_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🌊 Sensor IoT: Esperando datos..."
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:text="🌊 Sensor IoT: Esperando datos..." />
 
         <Button
             android:id="@+id/btn_refresh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Actualizar Datos"
             android:layout_marginTop="16dp"
             android:backgroundTint="#2980B9"
-            android:textColor="#FFFFFF"/>
+            android:text="Actualizar Datos"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </LinearLayout>

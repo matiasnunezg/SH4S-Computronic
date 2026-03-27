@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.services.mangrove_service import get_current_status, create_new_alert
+from app.services.mangrove_service import get_current_status, create_new_alert, get_zone_data
 from app.models.alert_models import AlertResponseModel
 
 router = APIRouter()
@@ -17,3 +17,12 @@ def mangrove_status():
 @router.post("/manglares/alert")
 def new_alert(alert: AlertResponseModel):
     return create_new_alert(alert)
+
+@router.get("/manglares/search", response_model=AlertResponseModel)
+def search_mangrove_by_name(zone: str):
+    data = get_zone_data(zone)
+
+    if not data:
+        raise HTTPException(status_code=404, detail=f"No se encontró información para la zona: {zone}")
+
+    return data

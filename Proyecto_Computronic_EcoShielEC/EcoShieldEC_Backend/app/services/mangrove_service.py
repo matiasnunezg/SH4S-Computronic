@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 from app.models.alert_models import AlertResponseModel, AnalysisModel
-from app.repositories.alert_repository import get_latest_alert, insert_alert
+from app.repositories.alert_repository import get_alert_by_zone, get_latest_alert, insert_alert
 from app.services.analysis_service import calculate_risk
 
 
@@ -38,4 +38,13 @@ def get_current_status():
     # Convertir ObjectId a string
     data["_id"] = str(data["_id"])
 
+    return AlertResponseModel(**data)
+
+def get_zone_data(zone_name: str):
+    data = get_alert_by_zone(zone_name)
+
+    if not data:
+        return None
+
+    data["_id"] = str(data["_id"])
     return AlertResponseModel(**data)
