@@ -26,7 +26,13 @@ public class MainActivity extends AppCompatActivity {
                 // Carga la SECCIÓN 1 (Matías)
                 loadFragment(new MapDashboardFragment());
                 return true;
-            } else if (itemId == R.id.nav_rewards) {
+            }
+            else if (itemId == R.id.nav_info) {
+                // NUEVO: Carga la Sección 2 (Matías)
+                loadFragment(new MangroveInfoFragment());
+                return true;
+            }
+            else if (itemId == R.id.nav_rewards) {
                 // Carga la SECCIÓN 5 (Doménica)
                 loadFragment(new RewardsFragment());
                 return true;
