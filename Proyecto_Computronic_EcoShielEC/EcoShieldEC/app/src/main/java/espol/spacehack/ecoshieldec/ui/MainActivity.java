@@ -12,7 +12,7 @@ import espol.spacehack.ecoshieldec.R;
 import espol.spacehack.ecoshieldec.ui.fragments.ActivitiesFragment;
 import espol.spacehack.ecoshieldec.ui.fragments.MapDashboardFragment;
 import espol.spacehack.ecoshieldec.ui.fragments.RewardsFragment;
-
+import espol.spacehack.ecoshieldec.ui.fragments.AlertsFragment;
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(new RewardsFragment());
                 return true;
 
+            } else if (itemId == R.id.nav_alerts) {
+                loadFragment(new AlertsFragment());
+                return true;
             } else {
                 Toast.makeText(this, "Sección en desarrollo", Toast.LENGTH_SHORT).show();
                 return true;
