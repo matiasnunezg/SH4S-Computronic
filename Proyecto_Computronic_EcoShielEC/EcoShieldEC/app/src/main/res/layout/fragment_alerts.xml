@@ -9,7 +9,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerCard"
         android:layout_width="0dp"
-        android:layout_height="160dp"
+        android:layout_height="150dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -43,7 +43,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="80dp"
-                android:text="Mangrove Alerts"
+                android:text="Mangrove Health &amp; Alerts"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -58,7 +58,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:text="Health, safety and tourism recommendations"
+                android:text="Quick ecosystem, tourism and flood status"
                 android:textColor="#DDEFE0"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/tvAlertsTitle"
@@ -85,35 +85,74 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Current status -->
+            <!-- MAIN HEALTH CARD -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="18dp"
+                android:layout_marginBottom="20dp"
                 app:cardBackgroundColor="#FFFDF7"
-                app:cardCornerRadius="22dp"
+                app:cardCornerRadius="24dp"
                 app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="18dp">
+                    android:gravity="center_horizontal"
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Current Mangrove Status"
+                        android:text="Mangrove Health"
                         android:textColor="#2C3E50"
                         android:textSize="18sp"
                         android:textStyle="bold" />
+
+                    <FrameLayout
+                        android:layout_width="170dp"
+                        android:layout_height="170dp"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/bg_health_circle">
+
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="34dp"
+                            android:src="@android:drawable/ic_menu_compass"
+                            android:tint="#2E7D32" />
+
+                        <TextView
+                            android:id="@+id/tvHealthPercent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="26dp"
+                            android:text="87%"
+                            android:textColor="#2C3E50"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvHealthLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:layout_marginBottom="30dp"
+                            android:text="Healthy"
+                            android:textColor="#2E7D32"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </FrameLayout>
 
                     <TextView
                         android:id="@+id/tvMangroveHealth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Healthy condition with moderate tourism activity."
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:text="Stable ecosystem with good vegetation condition."
                         android:textColor="#5F6C72"
                         android:textSize="14sp" />
 
@@ -122,23 +161,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
-                        android:background="@drawable/bg_chip_soft_green"
+                        android:background="@drawable/bg_chip_soft_yellow"
                         android:paddingStart="12dp"
                         android:paddingTop="6dp"
                         android:paddingEnd="12dp"
                         android:paddingBottom="6dp"
                         android:text="Low Risk"
-                        android:textColor="#2E7D32"
+                        android:textColor="#8A6A00"
                         android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Precaution alerts -->
+            <!-- TOURISM -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Precaution Alerts"
+                android:text="Tourism"
                 android:textColor="#2C3E50"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -155,64 +194,96 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="14dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tide and flooding advisory"
-                        android:textColor="#2C3E50"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="Visitors should remain on marked routes and avoid low areas during high tide periods."
-                        android:textColor="#5F6C72"
-                        android:textSize="14sp" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_circle_soft_green"
+                            android:padding="10dp"
+                            android:src="@android:drawable/ic_menu_mylocation"
+                            android:tint="#2E7D32" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Best time to visit"
+                                android:textColor="#2C3E50"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Morning recommended"
+                                android:textColor="#5F6C72"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_circle_soft_green"
+                            android:padding="10dp"
+                            android:src="@android:drawable/ic_menu_myplaces"
+                            android:tint="#2E7D32" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Responsible tourism"
+                                android:textColor="#2C3E50"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Follow guides and marked routes"
+                                android:textColor="#5F6C72"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sensitive biodiversity area"
-                        android:textColor="#2C3E50"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="Reduce noise, do not leave waste, and avoid disturbing birds, roots, or aquatic life."
-                        android:textColor="#5F6C72"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Tourism recommendations -->
+            <!-- FLOOD ALERTS -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Tourism Recommendations"
+                android:text="Flood &amp; Safety"
                 android:textColor="#2C3E50"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -229,65 +300,96 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="14dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Best conditions for visit"
-                        android:textColor="#2C3E50"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="Morning visits are recommended for safer access, better observation, and lower environmental stress."
-                        android:textColor="#5F6C72"
-                        android:textSize="14sp" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_circle_soft_yellow"
+                            android:padding="10dp"
+                            android:src="@android:drawable/ic_dialog_alert"
+                            android:tint="#8A6A00" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tide advisory"
+                                android:textColor="#2C3E50"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Avoid low areas at high tide"
+                                android:textColor="#5F6C72"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_circle_soft_yellow"
+                            android:padding="10dp"
+                            android:src="@android:drawable/ic_menu_info_details"
+                            android:tint="#8A6A00" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sensitive area"
+                                android:textColor="#2C3E50"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Avoid noise and waste"
+                                android:textColor="#5F6C72"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Responsible tourism"
-                        android:textColor="#2C3E50"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="Follow local guides, use marked paths, and support community businesses linked to conservation."
-                        android:textColor="#5F6C72"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Quick action -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRefreshAlerts"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
-                android:text="Refresh Alerts"
+                android:text="Refresh Status"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 app:backgroundTint="#2E7D32"
