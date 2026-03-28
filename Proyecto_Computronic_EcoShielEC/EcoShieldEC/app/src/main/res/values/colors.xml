@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="ecoshield_top_bar_background">#226D51</color>
     <color name="ecoshield_top_bar_text">#FFFFFF</color>
+    <color name="ecoshield_green">#226D51</color>
+
+    <color name="info_background">#F4F7F6</color> <color name="info_circle_bg">#E0E5E4</color> <color name="info_text_primary">#2C3E50</color> <color name="info_text_secondary">#7F8C8D</color>
 </resources>

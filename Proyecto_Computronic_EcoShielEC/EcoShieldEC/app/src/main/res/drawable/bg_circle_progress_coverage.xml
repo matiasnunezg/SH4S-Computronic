@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <rotate android:fromDegrees="270" android:toDegrees="270">
+            <shape android:shape="ring" android:thicknessRatio="12" android:useLevel="true">
+                <solid android:color="@color/ecoshield_top_bar_background"/>
+                <size android:width="@dimen/info_circle_size" android:height="@dimen/info_circle_size"/>
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

@@ -29,11 +29,22 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(new MapDashboardFragment());
                 return true;
 
+
             } else if (itemId == R.id.nav_activities) {
                 loadFragment(new ActivitiesFragment());
                 return true;
 
             } else if (itemId == R.id.nav_rewards) {
+
+            }
+            else if (itemId == R.id.nav_info) {
+                // NUEVO: Carga la Sección 2 (Matías)
+                loadFragment(new MangroveInfoFragment());
+                return true;
+            }
+            else if (itemId == R.id.nav_rewards) {
+                // Carga la SECCIÓN 5 (Doménica)
+
                 loadFragment(new RewardsFragment());
                 return true;
 
