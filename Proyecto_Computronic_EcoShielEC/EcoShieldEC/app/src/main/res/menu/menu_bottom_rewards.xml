@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_map"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="Map" />
+
+    <item
+        android:id="@+id/nav_learn"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="Learn" />
+
+    <item
+        android:id="@+id/nav_alerts"
+        android:icon="@android:drawable/ic_dialog_alert"
+        android:title="Alerts" />
+
+    <item
+        android:id="@+id/nav_activities"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="Activities" />
+
+    <item
+        android:id="@+id/nav_rewards"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="Rewards" />
+</menu>
